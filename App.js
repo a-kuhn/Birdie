@@ -1,4 +1,7 @@
+require("dotenv").config();
+
 import { SafeAreaView, StyleSheet } from "react-native";
+import CreateGameScreen from "./src/screens/CreateGameScreen";
 import Flashcard from "./src/components/Flashcard";
 
 export default function App() {
@@ -10,6 +13,7 @@ export default function App() {
   };
   return (
     <SafeAreaView style={styles.container}>
+      <CreateGameScreen />
       <Flashcard bird={bird} birdIdx={0} totalBirdCount={1} />
     </SafeAreaView>
   );
