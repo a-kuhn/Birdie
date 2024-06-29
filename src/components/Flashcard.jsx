@@ -8,7 +8,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 
-export default FlashCard = ({ bird, birdIdx, totalBirdCount }) => {
+export default Flashcard = ({ bird, birdIdx, totalBirdCount }) => {
   const [isFlipped, setIsFlipped] = useState(false);
   const animatedValue = useRef(new Animated.Value(0)).current;
 
@@ -51,7 +51,7 @@ export default FlashCard = ({ bird, birdIdx, totalBirdCount }) => {
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity onPress={flipCard}>
+      <TouchableOpacity onPress={flipCard} testID="flip-button">
         <View>
           <Animated.View
             style={[
@@ -59,11 +59,16 @@ export default FlashCard = ({ bird, birdIdx, totalBirdCount }) => {
               frontAnimatedStyle,
               { opacity: isFlipped ? 0 : 1 },
             ]}
+            testID="front-card"
           >
-            <Text style={styles.cardCount}>
+            <Text style={styles.cardCount} testID="front-card-count">
               bird {birdIdx + 1}/{totalBirdCount}
             </Text>
-            <Image source={{ uri: bird.imageUrl }} style={styles.image} />
+            <Image
+              source={{ uri: bird.imageUrl }}
+              style={styles.image}
+              testID="front-image"
+            />
           </Animated.View>
           <Animated.View
             style={[
@@ -72,14 +77,25 @@ export default FlashCard = ({ bird, birdIdx, totalBirdCount }) => {
               backAnimatedStyle,
               { opacity: isFlipped ? 1 : 0 },
             ]}
+            testID="back-card"
           >
-            <Text style={styles.cardCount}>
+            <Text style={styles.cardCount} testID="back-card-count">
               bird {birdIdx + 1}/{totalBirdCount}
             </Text>
-            <Text style={styles.famComName}>{bird.famComName}</Text>
-            <Image source={{ uri: bird.imageUrl }} style={styles.smallImage} />
-            <Text style={styles.comName}>{bird.comName}</Text>
-            <Text style={styles.latinName}>{bird.sciName}</Text>
+            <Text style={styles.famComName} testID="fam-com-name">
+              {bird.famComName}
+            </Text>
+            <Image
+              source={{ uri: bird.imageUrl }}
+              style={styles.smallImage}
+              testID="back-image"
+            />
+            <Text style={styles.comName} testID="com-name">
+              {bird.comName}
+            </Text>
+            <Text style={styles.latinName} testID="latin-name">
+              {bird.sciName}
+            </Text>
           </Animated.View>
         </View>
       </TouchableOpacity>
