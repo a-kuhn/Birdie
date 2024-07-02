@@ -83,7 +83,7 @@ export default Flashcard = ({ bird, birdIdx, totalBirdCount }) => {
               bird {birdIdx + 1}/{totalBirdCount}
             </Text>
             <Text style={styles.famComName} testID="fam-com-name">
-              {bird.famComName}
+              {bird.famComName ? bird.famComName : ""}
             </Text>
             <Image
               source={{ uri: bird.imageUrl }}
@@ -91,10 +91,10 @@ export default Flashcard = ({ bird, birdIdx, totalBirdCount }) => {
               testID="back-image"
             />
             <Text style={styles.comName} testID="com-name">
-              {bird.comName}
+              {bird.comName ? bird.comName : ""}
             </Text>
             <Text style={styles.latinName} testID="latin-name">
-              {bird.sciName}
+              {bird.sciName ? bird.sciName : ""}
             </Text>
           </Animated.View>
         </View>

@@ -62,7 +62,7 @@ export default CreateGameScreen = ({ setGameBirds }) => {
       alert(gameBirds.message);
       return;
     } else {
-      setGameBirds(gameBirds);
+      setGameBirds(gameBirds.data);
     }
   };
 
