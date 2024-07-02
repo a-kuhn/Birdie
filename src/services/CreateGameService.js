@@ -23,8 +23,11 @@ export const createGame = async (filtersToApply) => {
   );
 
   if (sppCodes.length === 0) {
-    throw new Error("No birds matching selected filters");
+    return {
+      status: "failure",
+      message: "No birds found for the selected filters",
+    };
   }
   const randomBirds = getRandomBirds(sppCodes, birdsNumber);
-  return randomBirds;
+  return { status: "success", data: randomBirds };
 };

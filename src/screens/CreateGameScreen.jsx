@@ -58,7 +58,12 @@ export default CreateGameScreen = ({ setGameBirds }) => {
       selectedCountyRegion,
     };
     const gameBirds = await createGame(filtersToApply);
-    setGameBirds(gameBirds);
+    if (gameBirds.status === "failure") {
+      alert(gameBirds.message);
+      return;
+    } else {
+      setGameBirds(gameBirds);
+    }
   };
 
   return (
